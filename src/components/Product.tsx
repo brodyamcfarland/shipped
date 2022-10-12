@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { StarIcon, CheckCircleIcon } from "@heroicons/react/solid";
 import Currency from "react-currency-formatter";
@@ -14,18 +14,23 @@ interface Props {
 
 const min_rating = 1;
 const max_rating = 5;
+const rating_array = [1, 2, 3, 4, 5];
 
 const Product = ({ id, title, price, description, category, image }: Props) => {
-    const [rating, setRating] = useState<number>(
-        Math.floor(Math.random() * (max_rating - min_rating + 1)) + min_rating
-    );
+    const [rating, setRating] = useState<number>(0);
 
-    const [isFreeShipping, setIsFreeShipping] = useState<boolean>(
-        Math.random() < 0.5
-    );
+    const [isFreeShipping, setIsFreeShipping] = useState<boolean>(false);
+
+    useEffect(() => {
+        setRating(
+            Math.floor(Math.random() * (max_rating - min_rating + 1)) +
+                min_rating
+        );
+        setIsFreeShipping(Math.random() < 0.5);
+    }, []);
 
     return (
-        <div className="relative flex flex-col m-5 bg-white z-30 p-10">
+        <div className="relative flex flex-col m-5 bg-white z-30 p-10 shadow-lg rounded-md ">
             <p className="absolute top-2 right-2 text-[10px] text-gray-500 uppercase">
                 {category}
             </p>
@@ -35,7 +40,7 @@ const Product = ({ id, title, price, description, category, image }: Props) => {
                 {Array(rating)
                     .fill(1)
                     .map((_, i) => (
-                        <StarIcon className="h-5 text-[#49acad]" />
+                        <StarIcon key={i} className="h-5 text-[#49acad]" />
                     ))}
             </div>
             <p className="text-xs my-2 line-clamp-2">{description}</p>
@@ -44,13 +49,15 @@ const Product = ({ id, title, price, description, category, image }: Props) => {
             </div>
             {isFreeShipping && (
                 <div className="flex items-center space-x-2 -mt-2 mb-3">
-                    <p className="text-xs flex items-center text-gray-500">
+                    <div className="text-xs flex items-center text-gray-500">
                         <CheckCircleIcon className="h-5 text-[#050A2F] mr-1" />
-                        FREE SHIPPING
-                    </p>
+                        <p>FREE SHIPPING</p>
+                    </div>
                 </div>
             )}
-            <button className="mt-auto button">Add to Cart</button>
+            <button className="mt-auto button" type="button">
+                Add to Cart
+            </button>
         </div>
     );
 };
