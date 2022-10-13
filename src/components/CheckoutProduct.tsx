@@ -48,7 +48,13 @@ const CheckoutProduct = ({
 
     return (
         <div className="grid grid-cols-5">
-            <Image src={image} height={200} width={200} objectFit="contain" />
+            <Image
+                src={image}
+                height={200}
+                width={200}
+                objectFit="contain"
+                alt=""
+            />
             <div className="col-span-3 mx-5">
                 <p>{title}</p>
                 <div className="flex">
