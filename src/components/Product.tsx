@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { StarIcon, CheckCircleIcon } from "@heroicons/react/solid";
 import Currency from "react-currency-formatter";
+import { useDispatch } from "react-redux";
+import { addToBasket } from "../slices/basketSlice";
 
 interface Props {
     id: number;
@@ -17,9 +19,23 @@ const max_rating = 5;
 const rating_array = [1, 2, 3, 4, 5];
 
 const Product = ({ id, title, price, description, category, image }: Props) => {
+    const dispatch = useDispatch();
     const [rating, setRating] = useState<number>(0);
 
     const [isFreeShipping, setIsFreeShipping] = useState<boolean>(false);
+
+    const addItemToBasket = () => {
+        const product = {
+            id,
+            title,
+            price,
+            description,
+            category,
+            image,
+        };
+
+        dispatch(addToBasket(product));
+    };
 
     useEffect(() => {
         setRating(
@@ -55,7 +71,11 @@ const Product = ({ id, title, price, description, category, image }: Props) => {
                     </div>
                 </div>
             )}
-            <button className="mt-auto button" type="button">
+            <button
+                onClick={addItemToBasket}
+                className="mt-auto button"
+                type="button"
+            >
                 Add to Cart
             </button>
         </div>

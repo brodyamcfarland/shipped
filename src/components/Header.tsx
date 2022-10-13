@@ -6,14 +6,23 @@ import {
     SearchIcon,
     ShoppingCartIcon,
 } from "@heroicons/react/outline";
+import { signIn, signOut, useSession } from "next-auth/react";
+import { useRouter } from "next/router";
+import { selectItems } from "../slices/basketSlice";
+import { useSelector } from "react-redux";
 
 const Header = () => {
+    const { data: session } = useSession();
+    const router = useRouter();
+    const items = useSelector(selectItems);
+
     return (
         <header>
             <div className="bg-[#050A2F] flex items-center p-1 flex-grow">
                 {/* Logo Side */}
                 <div className="mt-2 flex items-center flex-grow sm:flex-grow-0 mb-1 pr-3">
                     <Image
+                        onClick={() => router.push("/")}
                         src={Logo}
                         width={80}
                         height={30}
@@ -33,8 +42,15 @@ const Header = () => {
 
                 {/* Right Side */}
                 <div className="text-white flex items-center text-xs space-x-6 mx-6 whitespace-nowrap">
-                    <div className="link">
-                        <p>Hello, Brody!</p>
+                    <div
+                        onClick={!session ? () => signIn() : () => signOut()}
+                        className="link"
+                    >
+                        <p className="hover: underline">
+                            {session
+                                ? `Hello, ${session.user?.name}`
+                                : "Sign In"}
+                        </p>
                         <p className="font-extrabold md:text-sm">
                             Account & Lists
                         </p>
@@ -43,9 +59,12 @@ const Header = () => {
                         <p>Returns</p>
                         <p className="font-extrabold md:text-sm">& Orders</p>
                     </div>
-                    <div className="relative link flex items-center">
+                    <div
+                        onClick={() => router.push("/checkout")}
+                        className="relative link flex items-center"
+                    >
                         <span className="absolute top-0 left-8 h-4 w-4 rounded-full bg-red-700 text-center font-bold">
-                            3
+                            {items.length}
                         </span>
                         <ShoppingCartIcon className="h-10" />
                     </div>

@@ -11,7 +11,7 @@ interface Props {
 
 const Home = ({ products }: Props) => {
     return (
-        <div className="bg-gray-400">
+        <div className="bg-gray-500">
             <Head>
                 <title>Shipped</title>
             </Head>
