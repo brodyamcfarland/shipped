@@ -34,6 +34,7 @@ const ProductFeed = ({ products }: Props) => {
             <img
                 className="md:col-span-full h-full object-cover"
                 src="/SupachatBanner.png"
+                alt=""
             />
 
             <div className="md:col-span-2">

@@ -52,7 +52,13 @@ const Product = ({ id, title, price, description, category, image }: Props) => {
             <p className="absolute top-2 right-2 text-[10px] text-gray-500 uppercase">
                 {category}
             </p>
-            <Image src={image} height={200} width={200} objectFit="contain" />
+            <Image
+                src={image}
+                height={200}
+                width={200}
+                objectFit="contain"
+                alt=""
+            />
             <h4 className="my-3 font-bold">{title}</h4>
             <div className="flex">
                 {Array(rating)

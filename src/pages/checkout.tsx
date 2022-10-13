@@ -2,14 +2,14 @@ import React from "react";
 import Header from "../components/Header";
 import Image from "next/image";
 import { selectItems, selectTotal } from "../slices/basketSlice";
-import { useSelector } from "react-redux";
 import CheckoutProduct from "../components/CheckoutProduct";
 import Currency from "react-currency-formatter";
 import { useSession } from "next-auth/react";
+import { useAppSelector } from "../app/hooks";
 
 const checkout = () => {
-    const items = useSelector(selectItems);
-    const total = useSelector(selectTotal);
+    const items = useAppSelector(selectItems);
+    const total = useAppSelector(selectTotal);
     const { data: session } = useSession();
 
     return (
@@ -22,6 +22,7 @@ const checkout = () => {
                         height={250}
                         width={1020}
                         objectFit="contain"
+                        alt=""
                     />
                     <div className="flex flex-col p-5 space-y-10 bg-white">
                         <h1 className="text-2xl border-b pb-4">
