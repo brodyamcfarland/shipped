@@ -32,6 +32,8 @@ const Product = ({ id, title, price, description, category, image }: Props) => {
             description,
             category,
             image,
+            rating,
+            isFreeShipping,
         };
 
         dispatch(addToBasket(product));
