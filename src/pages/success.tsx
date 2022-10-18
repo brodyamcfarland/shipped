@@ -7,10 +7,10 @@ const success = () => {
     const router = useRouter();
 
     return (
-        <div className="bg-gray-400 h-screen">
+        <div className="bg-gradient-to-tr from-white to-gray-500 h-screen">
             <Header />
             <main className="max-w-screen-lg mx-auto">
-                <div className="flex flex-col p-10 bg-white shadow-md">
+                <div className="flex flex-col p-10 bg-white shadow-md mt-5">
                     <div className="flex items-center space-x-2 mb-5">
                         <CheckCircleIcon className="text-green-500 h-10" />
                         <h1 className="text-xl font-bold">

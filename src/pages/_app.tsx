@@ -2,6 +2,7 @@ import "../styles/globals.css";
 import { SessionProvider } from "next-auth/react";
 import { Provider } from "react-redux";
 import { store } from "../app/store";
+import { Toaster } from "react-hot-toast";
 
 interface Props {
     Component: any;
@@ -16,6 +17,7 @@ const MyApp = ({ Component, pageProps: { session, ...pageProps } }: Props) => {
         <SessionProvider session={session}>
             <Provider store={store}>
                 <Component {...pageProps} />
+                <Toaster />
             </Provider>
         </SessionProvider>
     );

@@ -4,6 +4,7 @@ import { StarIcon, CheckCircleIcon } from "@heroicons/react/solid";
 import Currency from "react-currency-formatter";
 import { useDispatch } from "react-redux";
 import { addToBasket } from "../slices/basketSlice";
+import toast from "react-hot-toast";
 
 interface Props {
     id: number;
@@ -16,7 +17,6 @@ interface Props {
 
 const min_rating = 1;
 const max_rating = 5;
-const rating_array = [1, 2, 3, 4, 5];
 
 const Product = ({ id, title, price, description, category, image }: Props) => {
     const dispatch = useDispatch();
@@ -37,6 +37,7 @@ const Product = ({ id, title, price, description, category, image }: Props) => {
         };
 
         dispatch(addToBasket(product));
+        toast.success(`${title} - Added to Cart`);
     };
 
     useEffect(() => {

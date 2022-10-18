@@ -17,10 +17,10 @@ const Header = () => {
     const items = useSelector(selectItems);
 
     return (
-        <header>
+        <header className="shadow-lg">
             <div className="bg-[#050A2F] flex items-center p-1 flex-grow">
                 {/* Logo Side */}
-                <div className="mt-2 flex items-center flex-grow sm:flex-grow-0 mb-1 pr-3">
+                <div className="mt-2 flex items-center flex-grow sm:flex-grow-0 mb-1 pr-3 text-white font-extrabold font-sans tracking-wide">
                     <Image
                         onClick={() => router.push("/")}
                         src={Logo}
@@ -30,6 +30,7 @@ const Header = () => {
                         className="cursor-pointer"
                         alt=""
                     />
+                    SHIPPED
                 </div>
 
                 {/* Search Bar */}
@@ -48,17 +49,18 @@ const Header = () => {
                         className="link"
                     >
                         <p className="hover: underline">
-                            {session
-                                ? `Hello, ${session.user?.name}`
-                                : "Sign In"}
+                            {session ? `Hello, ${session.user?.name}` : ""}
                         </p>
                         <p className="font-extrabold md:text-sm">
-                            Account & Lists
+                            {session ? "Sign Out" : "Sign In"}
                         </p>
                     </div>
-                    <div className="link">
-                        <p>Returns</p>
-                        <p className="font-extrabold md:text-sm">& Orders</p>
+                    <div
+                        onClick={() => router.push("/orders")}
+                        className="link"
+                    >
+                        <p>Order</p>
+                        <p className="font-extrabold md:text-sm">History</p>
                     </div>
                     <div
                         onClick={() => router.push("/checkout")}
@@ -77,14 +79,15 @@ const Header = () => {
                     <MenuIcon className="h-6 mr-1" />
                     All
                 </p>
-                <p className="filter-tags">Streaming</p>
-                <p className="filter-tags">Business</p>
                 <p className="filter-tags">Today's Deals</p>
-                <p className="filter-tags hidden lg:inline-flex">Tech</p>
-                <p className="filter-tags hidden lg:inline-flex">Food</p>
-                <p className="filter-tags hidden lg:inline-flex">Buy Again</p>
-                <p className="filter-tags hidden lg:inline-flex">Health</p>
-                <p className="filter-tags hidden lg:inline-flex">Clothing</p>
+                <p className="filter-tags hidden lg:inline-flex">Electronics</p>
+                <p className="filter-tags hidden lg:inline-flex">
+                    Men's Clothing
+                </p>
+                <p className="filter-tags hidden lg:inline-flex">
+                    Women's Clothing
+                </p>
+                <p className="filter-tags hidden lg:inline-flex">Jewely</p>
             </div>
         </header>
     );

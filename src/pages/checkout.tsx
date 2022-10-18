@@ -36,10 +36,10 @@ const Checkout = () => {
     };
 
     return (
-        <div className="bg-gray-400">
+        <div className="bg-gradient-to-tr from-white to-gray-500 h-screen">
             <Header />
             <main className="lg:flex max-w-screen-2xl mx-auto">
-                <div className="flex-grow m-5 shadow-md items-center">
+                <div className="flex-grow m-5 shadow-md items-center bg-[#050A2F] rounded-md">
                     <Image
                         src="/SupachatBannerSmall.png"
                         height={250}
@@ -47,7 +47,7 @@ const Checkout = () => {
                         objectFit="contain"
                         alt=""
                     />
-                    <div className="flex flex-col p-5 space-y-10 bg-white">
+                    <div className="flex flex-col p-5 space-y-10 bg-white rounded-b-md">
                         <h1 className="text-2xl border-b pb-4">
                             {items.length === 0
                                 ? "Your Cart is currently empty."
@@ -69,7 +69,11 @@ const Checkout = () => {
                     </div>
                 </div>
 
-                <div className="flex flex-col bg-white p-10">
+                <div
+                    className={`${
+                        items.length === 0 && "hidden"
+                    } flex flex-col bg-white p-10`}
+                >
                     {items.length > 0 && (
                         <>
                             <h2 className="whitespace-nowrap">
