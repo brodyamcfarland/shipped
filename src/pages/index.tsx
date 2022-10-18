@@ -5,7 +5,7 @@ import ProductFeed from "../components/ProductFeed";
 import { GetServerSideProps } from "next";
 import { Products } from "../../types";
 import { getSession } from "next-auth/react";
-
+import { useState } from "react";
 interface Props {
     products: Products[];
 }

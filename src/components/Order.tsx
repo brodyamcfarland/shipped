@@ -29,9 +29,9 @@ const Order = ({
                     </p>
                 </div>
                 <p className="text-[#5FE1E5] text-sm whitespace-nowrap sm:text-lg self-end flex-1 text-right">
-                    {items.length} Items
+                    {items.length} Item(s)
                 </p>
-                <p className="absolute top-2 right-2 w-40 lg:w-72 truncate text-xs text-gray-100">
+                <p className="absolute top-2 right-2 w-40 lg:w-72 truncate text-[10px] text-gray-300">
                     ORDER # {id}
                 </p>
             </div>

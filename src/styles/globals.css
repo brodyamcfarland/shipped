@@ -14,4 +14,8 @@
     .button {
         @apply p-2 text-xs md:text-sm bg-gradient-to-tr from-[#050A2F] to-[#5FE1E5] border border-[#050A2F] text-white rounded-md focus:outline-none active:to-[#0dbac4];
     }
+
+    .tool {
+        @apply bg-[#050A2F] text-white px-2 rounded-md;
+    }
 }
