@@ -47,6 +47,7 @@ const Orders = ({ orders }: any) => {
                             images,
                         }: OrdersType) => (
                             <Order
+                                key={id}
                                 id={id}
                                 amount={amount}
                                 amountShipping={amountShipping}
