@@ -32,6 +32,12 @@ const Header = () => {
         }
     };
 
+    const handleFilter = (e: any) => {
+        e.preventDefault();
+        console.log(e.target.value);
+        router.push(`/search/filter/${e.target.value}`);
+    };
+
     return (
         <header className="shadow-lg relative select-none">
             <div className="bg-[#050A2F] flex items-center p-1 flex-grow">
@@ -104,14 +110,34 @@ const Header = () => {
                     <MenuIcon className="h-6 mr-1" />
                     All
                 </p>
-                <p className="filter-tags hidden lg:inline-flex">Electronics</p>
-                <p className="filter-tags hidden lg:inline-flex">
+                <button
+                    onClick={(e) => handleFilter(e)}
+                    value="electronics"
+                    className="filter-tags hidden lg:inline-flex"
+                >
+                    Electronics
+                </button>
+                <button
+                    onClick={(e) => handleFilter(e)}
+                    value="men's clothing"
+                    className="filter-tags hidden lg:inline-flex"
+                >
                     Men's Clothing
-                </p>
-                <p className="filter-tags hidden lg:inline-flex">
+                </button>
+                <button
+                    onClick={(e) => handleFilter(e)}
+                    value="women's clothing"
+                    className="filter-tags hidden lg:inline-flex"
+                >
                     Women's Clothing
-                </p>
-                <p className="filter-tags hidden lg:inline-flex">Jewely</p>
+                </button>
+                <button
+                    onClick={(e) => handleFilter(e)}
+                    value="jewelery"
+                    className="filter-tags hidden lg:inline-flex"
+                >
+                    Jewelry
+                </button>
             </div>
             {/* SideBar Modal */}
             {modalEnabled && (
