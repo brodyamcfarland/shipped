@@ -25,7 +25,11 @@ const Header = () => {
 
     const fireQuery = (e: any) => {
         e.preventDefault();
-        console.log(query);
+        if (query !== "") {
+            router.push(`/search/${query}`);
+        } else {
+            return;
+        }
     };
 
     return (

@@ -6,11 +6,11 @@ import { GetServerSideProps } from "next";
 import { Products } from "../../types";
 import { getSession } from "next-auth/react";
 import { useState } from "react";
-interface Props {
+export interface ProductQuery {
     products: Products[];
 }
 
-const Home = ({ products }: Props) => {
+const Home = ({ products }: ProductQuery) => {
     return (
         <div className="bg-gradient-to-tr from-white to-gray-500">
             <Head>
