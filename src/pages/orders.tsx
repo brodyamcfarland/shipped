@@ -37,7 +37,7 @@ const Orders = ({ orders }: any) => {
                 )}
 
                 <div className="mt-5 space-y-4">
-                    {orders.map(
+                    {orders?.map(
                         ({
                             id,
                             amount,
